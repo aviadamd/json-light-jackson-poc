@@ -12,7 +12,9 @@ public class PersonData {
     @JsonInclude(value = JsonInclude.Include.NON_EMPTY)
     private Address address;
 
-    public PersonData() {}
+    public PersonData() {
+
+    }
 
     public PersonData(String name, String age) {
         this.name = name;

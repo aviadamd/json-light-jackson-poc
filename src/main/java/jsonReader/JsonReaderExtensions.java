@@ -1,7 +1,9 @@
 package jsonReader;
 
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,9 +30,9 @@ public class JsonReaderExtensions {
         try {
             if (this.file.exists()) {
                 String name = this.file.getName();
-                List<T> oldPersonDataList = this.readAllJson(dtoTypeClass);
-                if (!oldPersonDataList.isEmpty()) {
-                    newDataList.addAll(oldPersonDataList);
+                List<T> oldDataList = this.readAllJson(dtoTypeClass);
+                if (!oldDataList.isEmpty()) {
+                    newDataList.addAll(oldDataList);
                     logger.debug("file " + name + " has updated");
                 }
                 return newDataList;
@@ -71,5 +73,4 @@ public class JsonReaderExtensions {
         }
         return MappingIterator.emptyIterator();
     }
-
 }

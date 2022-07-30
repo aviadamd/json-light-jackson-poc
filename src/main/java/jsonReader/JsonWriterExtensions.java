@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,7 +47,7 @@ public class JsonWriterExtensions {
             return this;
 
         } catch (Exception exception) {
-            logger.error(exception.getMessage());
+            logger.error("readAndWrite exception" +exception.getMessage());
         }
 
         return this;
@@ -70,4 +69,13 @@ public class JsonWriterExtensions {
         }
     }
 
+    public <T> void writeValuesFromListAsString(List<T> type) {
+        try {
+            List<String> collector = new ArrayList<>();
+            for (T t: type) collector.add(objectMapper.writeValueAsString(t));
+            this.objectWriter().writeValue(this.file, collector);
+        } catch (IOException ioException) {
+            logger.error("IOException cannot write to json " + ioException.getMessage());
+        }
+    }
 }

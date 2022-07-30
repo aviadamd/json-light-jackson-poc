@@ -1,14 +1,20 @@
 package jsonReader;
 
 import com.fasterxml.jackson.databind.MappingIterator;
+import io.reactivex.rxjava3.core.Single;
+
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class JsonReadAndWriteExtensions {
 
-    private final JsonReaderExtensions jsonReaderExtensions;
-    private final JsonWriterExtensions jsonWriterExtensions;
+    private JsonReaderExtensions jsonReaderExtensions;
+    private JsonWriterExtensions jsonWriterExtensions;
+
+    public Single<JsonReadAndWriteExtensions> readAndWriteExtensions(String fileName, int fileNum) {
+        return Single.just(new JsonReadAndWriteExtensions(fileName, fileNum));
+    }
 
     public JsonReadAndWriteExtensions(String fileName, int fileNumber) {
         this(fileName, fileNumber, 6000);
@@ -60,5 +66,4 @@ public class JsonReadAndWriteExtensions {
                 .filter(filterBy)
                 .collect(Collectors.toList());
     }
-
 }

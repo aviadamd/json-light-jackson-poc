@@ -13,11 +13,6 @@ public class PersonObjectsDto {
             personsData.add(new PersonData("asaf", "9", new Address("tel aviv", "negba", "3")));
             personsData.add(new PersonData("dvir", "6", new Address("tel aviv", "negba", "3")));
             personsData.add(new PersonData("yael", "4", new Address("tel aviv", "negba", "3")));
-            personsData.add(new PersonData("aviad", "36", new Address("tel aviv", "negba", "3")));
-            personsData.add(new PersonData("michal", "35", new Address("tel aviv", "negba", "3")));
-            personsData.add(new PersonData("asaf", "9", new Address("tel aviv", "negba", "3")));
-            personsData.add(new PersonData("dvir", "6", new Address("tel aviv", "negba", "3")));
-            personsData.add(new PersonData("yael", "4", new Address("tel aviv", "negba", "3")));
         }
         return personsData;
     }
